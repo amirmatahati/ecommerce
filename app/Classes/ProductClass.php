@@ -28,7 +28,7 @@ class ProductClass {
     {
         $cat          = MProduct::join('category_product', 'product.produc_category', 'category_product.id')
                       ->where('category_product.category_alias', $alias)
-                      ->select('category_product.id as id_cat', 'category_product.category_name', 'product.id', 'product.price', 'product.product_title', 'product.img_product1')
+                      ->select('category_product.id as id_cat', 'category_product.category_name', 'product.id', 'product.price', 'product.product_title', 'product.img_product1', 'product.product_alias')
                       ->paginate(1);
       if(!empty($cat)){
           return $cat;
@@ -40,6 +40,14 @@ class ProductClass {
 
         if(!empty($name_cat)){
             return $name_cat->category_name;
+        }
+    }
+    public function GetProductByPAlias($alias)
+    {
+        $product      = MProduct::where('product_alias', $alias)->get();
+
+        if(!empty($product)){
+            return $product;
         }
     }
 }

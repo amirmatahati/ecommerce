@@ -16,7 +16,7 @@
                                             <img v-bind:src="p.img_product1" alt="" class="img-response center-block" width="100%">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
-                                                    <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                    <router-link v-bind:to="{name: 'SingelProduct', params: {product_name: p.product_alias}}" class="link-product-add-cart">Quick View</router-link>
                                                 </div>
                                             </div>
                                           </div>

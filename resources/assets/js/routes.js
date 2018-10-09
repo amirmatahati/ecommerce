@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import ShopIndex from './components/shop/IndexHome.vue';
 import DetailShop from './components/shop/DetailProduct.vue';
+import SingelProduct from './components/shop/SingelProduct.vue';
 
 import AddProduct from './components/admin/product/Add.vue';
 import ListProduct from './components/admin/product/ListProduct.vue';
@@ -31,6 +32,11 @@ let routes = [
       path: '/:alias',
       name: 'DetailShop',
       component: DetailShop
+  },
+  {
+      path: '/detail/:product_name',
+      name: 'SingelProduct',
+      component: SingelProduct
   }
 ];
 

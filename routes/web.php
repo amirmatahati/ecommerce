@@ -20,6 +20,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/get-product-home', 'HomeController@GetProduct');
 Route::get('/category-product/{alias}', 'HomeController@CategoryProduct');
+Route::get('/product/{product_alias}', 'HomeController@DetailProduct');
 
 Route::get('/admin', 'Admin\HomeController@index')->name('admin');
 Route::get('/admin/create-product', 'Admin\HomeController@createProduct')->name('admin');

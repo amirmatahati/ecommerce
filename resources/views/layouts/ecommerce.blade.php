@@ -39,8 +39,10 @@
     <script src="js/app.js" defer></script>
 <!--    <script src="https://unpkg.com/vue@latest"></script>
   	<script src="https://cdn.jsdelivr.net/npm/vue@2.5"></script> -->
-    
+
     <script src="web/js/jquery-2.2.3.min.js"></script>
+      <script src="web/js/jquery.magnific-popup.js"></script>
+    <script src="web/js/bootstrap.js"></script>
     <!-- //jquery -->
 
     <!-- nav smooth scroll -->
@@ -60,6 +62,7 @@
     </script>
     <!-- //nav smooth scroll -->
 
+  	
 
 
     <!-- cart-js -->
@@ -91,32 +94,9 @@
     <!-- //password-script -->
 
     <!-- scroll seller -->
-    <script src="web/js/scroll.js"></script>
-    <!-- //scroll seller -->
 
-    <!-- smoothscroll -->
-    <script src="web/js/SmoothScroll.min.js"></script>
-    <!-- //smoothscroll -->
 
-    <!-- start-smooth-scrolling -->
-    <script src="web/js/move-top.js"></script>
-    <script src="web/js/easing.js"></script>
-    <script>
-      jQuery(document).ready(function ($) {
-        $(".scroll").click(function (event) {
-          event.preventDefault();
 
-          $('html,body').animate({
-            scrollTop: $(this.hash).offset().top
-          }, 1000);
-        });
-      });
-    </script>
-    <!-- //end-smooth-scrolling -->
-
-    <!-- smooth-scrolling-of-move-up -->
-
-    <script src="web/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
 

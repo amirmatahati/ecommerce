@@ -49,4 +49,10 @@ class HomeController extends Controller
 
         return response()->json($data);
     }
+    public function DetailProduct($product_alias)
+    {
+        $product        = $this->products->GetProductByPAlias($product_alias);
+
+        return response()->json($product);
+    }
 }
