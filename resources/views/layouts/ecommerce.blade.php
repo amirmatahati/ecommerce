@@ -22,6 +22,7 @@
   	<link href="web/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
   	<!-- pop-up-box -->
   	<link href="web/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="web/css/flexslider.css" type="text/css" media="screen" />
   	<!-- menu style -->
   	<!-- //Custom-Files -->
 
@@ -41,8 +42,9 @@
   	<script src="https://cdn.jsdelivr.net/npm/vue@2.5"></script> -->
 
     <script src="web/js/jquery-2.2.3.min.js"></script>
-      <script src="web/js/jquery.magnific-popup.js"></script>
     <script src="web/js/bootstrap.js"></script>
+    <script src="web/js/imagezoom.js"></script>
+    <script src="web/js/jquery.flexslider.js"></script>
     <!-- //jquery -->
 
     <!-- nav smooth scroll -->
@@ -62,43 +64,27 @@
     </script>
     <!-- //nav smooth scroll -->
 
-  	
+  	<!-- //imagezoom -->
 
-
-    <!-- cart-js -->
-    <script src="web/js/minicart.js"></script>
-    <script>
-      paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
-
-      paypals.minicarts.cart.on('checkout', function (evt) {
-        var items = this.items(),
-          len = items.length,
-          total = 0,
-          i;
-
-        // Count the number of each item in the cart
-        for (i = 0; i < len; i++) {
-          total += items[i].get('quantity');
-        }
-
-        if (total < 3) {
-          alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-          evt.preventDefault();
-        }
-      });
-    </script>
-    <!-- //cart-js -->
-
-    <!-- password-script -->
-
-    <!-- //password-script -->
-
-    <!-- scroll seller -->
+  	<!-- flexslider -->
 
 
 
-    <!-- //for bootstrap working -->
-    <!-- //js-files -->
+  	<script>
+    (function(jQuery){
+        jQuery(window).load(function(){
+            jQuery('.flexslider').flexslider({
+            animation: "fade", controlNav: "thumbnails", directionNav: false,
+            start: function(slider){
+              jQuery('.slider-container').removeClass('loading');
+            }
+          });
+         jQuery('.sliderTitle').css('opacity',0.9);
+        });
+    }(jQuery));
+  	</script>
+
+
 
 </body>
 </html>

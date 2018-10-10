@@ -50,4 +50,19 @@ class ProductClass {
             return $product;
         }
     }
+    public function GetiDbyAlias($alias)
+    {
+        $product      = MProduct::where('product_alias', $alias)->first();
+
+        if(!empty($product)){
+            return $product->id;
+        }
+    }
+    public function GetProduk($id)
+    {
+        $product      = MProduct::find($id);
+        if(!empty($product)){
+            return $product;
+        }
+    }
 }

@@ -51,8 +51,11 @@ class HomeController extends Controller
     }
     public function DetailProduct($product_alias)
     {
-        $product        = $this->products->GetProductByPAlias($product_alias);
-
-        return response()->json($product);
+        $id_produk      = $this->products->GetiDbyAlias($product_alias);
+        $product        = $this->products->GetProduk($id_produk);
+        $data = [
+          'img_product1'  => $product->img_product1
+        ];
+        return response()->json($data);
     }
 }
