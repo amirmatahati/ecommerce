@@ -1,7 +1,8 @@
 <?php
     use App\Models\MCategoryProduct;
 
-    $category_m       = MCategoryProduct::where('parent_id','NOT LIKE', 0)->get();
+    $category_m       = MCategoryProduct::where('parent_id', 1)->where('parent_id', 'NOT LIKE', 0)->get();
+    $category_m2      = MCategoryProduct::where('parent_id', 3)->where('parent_id','NOT LIKE', 0)->get();
  ?>
 <div class="navbar-inner">
   <div class="container">
@@ -90,33 +91,11 @@
                 <div class="row">
                   <div class="col-sm-6 multi-gd-img">
                     <ul class="multi-column-dropdown">
+                    @foreach($category_m2 as $m2)
                       <li>
-                        <a href="product2.html">Televisions</a>
+                      <router-link v-bind:to="{name: 'DetailShop', params: {alias: '<?php echo $m2->category_alias;?>'} }">{{ $m2->category_name }}</a></router-link>
                       </li>
-                      <li>
-                        <a href="product2.html">Home Entertainment Systems</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">Headphones</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">Speakers</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">MP3, Media Players & Accessories</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">Audio & Video Accessories</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">Cameras</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">DSLR Cameras</a>
-                      </li>
-                      <li>
-                        <a href="product2.html">Camera Accessories</a>
-                      </li>
+                      @endforeach
                     </ul>
                   </div>
                   <div class="col-sm-6 multi-gd-img">

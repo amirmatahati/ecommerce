@@ -14,7 +14,8 @@ import BootstrapVue from 'bootstrap-vue';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import ProductZoomer from 'vue-product-zoomer';
+//import ProductZoomer from 'vue-product-zoomer';
+import vueHeadful from 'vue-headful';
 
 window.Vue = require('vue');
 /**
@@ -25,10 +26,11 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('vue-headful', vueHeadful);
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
-Vue.use(ProductZoomer)
+//Vue.use(ProductZoomer)
 
 const app = new Vue({
     el: '#app',

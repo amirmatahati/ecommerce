@@ -16,12 +16,19 @@ use DB;
 use Carbon;
 
 class ProductClass {
-    public function Product($limit)
+    public function Product($cat,$limit)
     {
-        $product      = MProduct::where('status', 1);
+        $product        = MProduct::join('category_product', 'product.produc_category', 'category_product.id')
+                        ->where(function($query) use ($cat){
+                            $query->where('category_product.parent_id', $cat);
+                        })
+                        ->where(function($query){
+                            $query->where('product.status', 1);
+                        })
+                        ->select('product.id', 'product.product_title', 'product.product_alias', 'product.price', 'product.img_product1', 'category_product.category_alias');
 
         if(!empty($limit)){
-            return $product->orderBy('id', 'DESC')->limit($limit)->get();
+            return $product->orderBy('product.id', 'DESC')->limit($limit)->get();
         }
     }
     public function ProductCatByAlias($alias)
@@ -29,7 +36,7 @@ class ProductClass {
         $cat          = MProduct::join('category_product', 'product.produc_category', 'category_product.id')
                       ->where('category_product.category_alias', $alias)
                       ->select('category_product.id as id_cat', 'category_product.category_name', 'product.id', 'product.price', 'product.product_title', 'product.img_product1', 'product.product_alias')
-                      ->paginate(1);
+                      ->paginate(10);
       if(!empty($cat)){
           return $cat;
       }

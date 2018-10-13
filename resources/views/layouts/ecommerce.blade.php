@@ -30,12 +30,43 @@
   	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
   	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
   	    rel="stylesheet">
+    <style>
+      #myCarousel .list-inline {
+    white-space:nowrap;
+    margin-top: 66px;
+}
+
+#myCarousel .carousel-indicators {
+    position: static;
+    left: initial;
+    width: initial;
+    margin-left: initial;
+}
+
+#myCarousel .carousel-indicators > li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+    border: 1px solid #e2e2e2;
+}
+
+#myCarousel .carousel-indicators > li.active img {
+    opacity: 0.7;
+}
+      </style>
 </head>
 <body>
     <div id="app">
         @include('shop.header')
         @include('shop.navbar')
         @yield('content')
+    </div>
+    <div class="copy-right py-3">
+      <div class="container">
+        <p class="text-center text-white">© 2018 Electro Store. All rights reserved | Design by
+          <a href="http://w3layouts.com"> W3layouts.</a>
+        </p>
+      </div>
     </div>
     <script src="js/app.js" defer></script>
 <!--    <script src="https://unpkg.com/vue@latest"></script>
@@ -74,7 +105,7 @@
     (function(jQuery){
         jQuery(window).load(function(){
             jQuery('.flexslider').flexslider({
-            animation: "fade", controlNav: "thumbnails", directionNav: false,
+            animation: "fade", controlNav: "thumbnails", directionNav: true,
             start: function(slider){
               jQuery('.slider-container').removeClass('loading');
             }
@@ -82,6 +113,7 @@
          jQuery('.sliderTitle').css('opacity',0.9);
         });
     }(jQuery));
+    
   	</script>
 
 

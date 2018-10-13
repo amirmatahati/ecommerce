@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\MProduct;
 use App\Classes\StringClass;
 use App\Classes\ProductClass;
 
@@ -27,15 +27,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product        = $this->products->Product(3);
+        $product        = $this->products->Product(1,3);
 
         return view('home');
     }
     public function GetProduct()
     {
-        $product        = $this->products->Product(3);
+        $product        = $this->products->Product(1,3);
+        $product1       = $this->products->Product(3,3);
 
-        return response()->json($product);
+        $data = [
+            'hp'        => $product,
+            'tv'        => $product1
+        ];
+
+        return response()->json($data);
     }
     public function CategoryProduct($alias)
     {
@@ -53,9 +59,10 @@ class HomeController extends Controller
     {
         $id_produk      = $this->products->GetiDbyAlias($product_alias);
         $product        = $this->products->GetProduk($id_produk);
+        $product1 = MProduct::where('id', $id_produk)->get();
         $data = [
           'img_product1'  => $product->img_product1
         ];
-        return response()->json($data);
+        return response()->json($product);
     }
 }

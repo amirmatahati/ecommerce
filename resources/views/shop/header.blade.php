@@ -5,7 +5,7 @@
       <div class="col-md-3 logo_agile">
         <h1 class="text-center">
           <a href="index.html" class="font-weight-bold font-italic">
-            <img src="web/images/logo2.png" alt=" " class="img-fluid">Electro Store
+            <img src="images/amirmatahati.gif" alt=" " class="img-fluid"><span style="color:#fff">Electro Store</span>
           </a>
         </h1>
       </div>

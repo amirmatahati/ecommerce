@@ -1,5 +1,9 @@
 <template>
     <div id="amir">
+      <vue-headful
+            title="Title from vue-headful"
+            description="Description from vue-headful"
+        />
       <!-- banner -->
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
@@ -98,7 +102,7 @@
                                               <img v-bind:src="p.img_product1" alt="" class="img-response center-block" width="100%">
                                               <div class="men-cart-pro">
                                                   <div class="inner-men-cart-pro">
-                                                    <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                    <router-link v-bind:to="{name: 'SingelProduct', params: {product_name: p.product_alias}}" class="link-product-add-cart">Quick View</router-link>
                                                   </div>
                                               </div>
                                           </div>
@@ -116,14 +120,49 @@
                                           </div>
                                       </div>
                                   </div>
+                                   
                               </div>
+
                           </div>
+                                                        <!--- tv & audio -->
+                                  <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                                    <h3 class="heading-tittle text-center font-italic">Tv & Audio</h3>
+                                    <div class="row">
+                                        <div class="col-md-4 product-men mt-5" v-for="tv in tv" :key="tv.id">
+                                            <div class="men-pro-item simpleCart_shelfItem">
+                                                <div class="men-thumb-item text-center">
+                                                    <img v-bind:src="tv.img_product1" alt="" class="img-response center-block" width="100%">
+                                                    <div class="men-cart-pro">
+                                                        <div class="inner-men-cart-pro">
+                                                          <router-link v-bind:to="{name: 'SingelProduct', params: {product_name: tv.product_alias}}" class="link-product-add-cart">Quick View</router-link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="single.html">{{ tv.product_title }}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">$ {{ tv.price}}</span>
+                                                        <del>$280.00</del>
+                                                    </div>
+                                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                       </div>
                   </div>
               </div>
 
           </div>
       </div>
+
+     
+      
 
     </div>
 
@@ -139,7 +178,8 @@
 		data(){
 			return{
 
-				queries: {},
+				queries : {},
+        tv      : {}
 			}
 		  },
 		mounted(){
@@ -152,8 +192,8 @@
 			product() {
 				axios.get('./get-product-home')
 					.then(response => {
-						this.queries	= response.data
-            console.log(this.queries)
+						this.queries	= response.data.hp
+            this.tv       = response.data.tv
 					})
 					.catch(error => {
 						console.log(error.response.data);
