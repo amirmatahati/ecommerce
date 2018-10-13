@@ -111,7 +111,7 @@
                                                   <a href="single.html">{{ p.product_title }}</a>
                                               </h4>
                                               <div class="info-product-price my-2">
-                                                  <span class="item_price">$ {{ p.price}}</span>
+                                                  <span class="item_price">Rp. {{ formatPrice(p.price) }}</span>
                                                   <del>$280.00</del>
                                               </div>
                                               <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -143,7 +143,7 @@
                                                         <a href="single.html">{{ tv.product_title }}</a>
                                                     </h4>
                                                     <div class="info-product-price my-2">
-                                                        <span class="item_price">$ {{ tv.price}}</span>
+                                                        <span class="item_price">Rp. {{ formatPrice(tv.price) }}</span>
                                                         <del>$280.00</del>
                                                     </div>
                                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -198,7 +198,11 @@
 					.catch(error => {
 						console.log(error.response.data);
 					});
-			},
+      },
+      formatPrice(value) {
+				let val = (value/1).toFixed(2).replace('.', ',')
+				return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+			}
 
 		}
 

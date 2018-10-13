@@ -5,10 +5,10 @@
                 <div class="container">
                     <ul class="w3_short">
                         <li>
-                            <a href="index.html">Home</a>
+                            <router-link v-bind:to="{name: 'ShopIndex'}">Home</router-link>
                             <i>|</i>
                         </li>
-                        <li>Single Product 1</li>
+                        <li>{{ names }}</li>
                     </ul>
                 </div>
             </div>
@@ -21,64 +21,42 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-8 single-right-left ">
                         <div class="grid images_3_of_2">
-                            <!--
-                            <div class="flexslider">
-                                   
-                                <ul class="slides">
-								<li data-thumb="web/images/si1.jpg">
-									<div class="thumb-image">
-										<img src="web/images/si1.jpg" data-imagezoom="false" class="img-fluid ini_gambar" alt=""> 
-                                    </div>
-								</li>
-                                <li :data-thumb="'http://localhost/shop1/public/'+ image.img_product1+''">
-									<div class="thumb-image">
-										<img :src="'http://localhost/shop1/public/'+image.img_product2+''" data-imagezoom="false" class="img-fluid ini_gambar" alt=""> 
-                                    </div>
-								</li>
-							</ul>
-                            
-                                <div class="clearfix"></div>
-                            </div>
-                                  -->
                             <div id="myCarousel" class="carousel slide">
                     <!-- main slider carousel items -->
-                    <div class="carousel-inner">
-                        <div class="active item carousel-item" data-slide-number="0">
-                            <img :src="image.img_product1" class="img-fluid">
-                        </div>
-                        <div class="item carousel-item" data-slide-number="1">
-                            <img :src="image.img_product2" class="img-fluid">
-                        </div>
-                        <div class="item carousel-item" data-slide-number="2">
-                            <img :src="image.img_product3" class="img-fluid">
-                        </div>
-                        
-                        <a class="carousel-control left pt-3" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                        <a class="carousel-control right pt-3" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-
-                    </div>
+                                <div class="carousel-inner">
+                                    <div class="active item carousel-item" data-slide-number="0">
+                                        <img :src="image.img_product1" data-imagezoom="true" class="img-fluid">
+                                    </div>
+                                    <div class="item carousel-item" data-slide-number="1">
+                                        <img :src="image.img_product2" data-imagezoom="true" class="img-fluid">
+                                    </div>
+                                    <div class="item carousel-item" data-slide-number="2">
+                                        <img :src="image.img_product3"  data-imagezoom="true" class="img-fluid">
+                                    </div>
+                                    
+                                </div>
                     <!-- main slider carousel nav controls -->
 
 
-                    <ul class="carousel-indicators list-inline">
-                        <li class="list-inline-item active" data-slide-to="0" data-target="#myCarousel">
-                            <a id="carousel-selector-0" class="selected" >
-                                <img :src="image.img_product1" class="img-fluid">
-                            </a>
-                        </li>
-                        <li class="list-inline-item" data-slide-to="1" data-target="#myCarousel">
-                            <a id="carousel-selector-1" >
-                                <img :src="image.img_product2" class="img-fluid">
-                            </a>
-                        </li>
-                        <li class="list-inline-item" data-slide-to="2" data-target="#myCarousel">
-                            <a id="carousel-selector-2" >
-                                <img :src="image.img_product3" class="img-fluid">
-                            </a>
-                        </li>
-                        
-                    </ul>
-            </div>
+                                <ul class="carousel-indicators list-inline">
+                                    <li class="list-inline-item active" data-slide-to="0" data-target="#myCarousel">
+                                        <a id="carousel-selector-0" class="selected" >
+                                            <img :src="image.img_product1" class="img-fluid">
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item" data-slide-to="1" data-target="#myCarousel">
+                                        <a id="carousel-selector-1" >
+                                            <img :src="image.img_product2" class="img-fluid">
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item" data-slide-to="2" data-target="#myCarousel">
+                                        <a id="carousel-selector-2" >
+                                            <img :src="image.img_product3" class="img-fluid">
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
                       </div>
                     </div>
 
@@ -86,7 +64,7 @@
                     <div class="col-lg-7 single-right-left simpleCart_shelfItem">
                         <h3 class="mb-3">{{ image.product_title }}</h3>
                         <p class="mb-3">
-                            <span class="item_price">$ {{ image.price }} </span>
+                            <span class="item_price">Rp. {{ formatPrice(image.price) }} </span>
                             <del class="mx-2 font-weight-light">$280.00</del>
                             <label>Free delivery</label>
                         </p>
@@ -139,7 +117,8 @@
 		data(){
 			return{
               
-          image:{}
+          image:{},
+          names : ''
 			}
 		  },
 		mounted(){
@@ -154,14 +133,17 @@
 			product() {
 				axios.get('./product/'+ this.$route.params.product_name)
 					.then(response => {
-                        this.image	= response.data
-                        console.log(this.image)
-            console.log(this.image)
+                        this.image	= response.data.product
+                        this.names  = response.data.name
 					})
 					.catch(error => {
 						console.log(error.response.data);
 					});
-			},
+            },
+            formatPrice(value) {
+				let val = (value/1).toFixed(2).replace('.', ',')
+				return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+			}
 
 		}
 

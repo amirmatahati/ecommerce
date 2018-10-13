@@ -59,10 +59,11 @@ class HomeController extends Controller
     {
         $id_produk      = $this->products->GetiDbyAlias($product_alias);
         $product        = $this->products->GetProduk($id_produk);
-        $product1 = MProduct::where('id', $id_produk)->get();
+        $namesCat       = $this->products->CatNameByID($product->produc_category);
         $data = [
-          'img_product1'  => $product->img_product1
+          'name'        => $namesCat,
+          'product'     => $product
         ];
-        return response()->json($product);
+        return response()->json($data);
     }
 }

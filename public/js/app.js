@@ -56814,6 +56814,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).catch(function (error) {
 				console.log(error.response.data);
 			});
+		},
+		formatPrice: function formatPrice(value) {
+			var val = (value / 1).toFixed(2).replace('.', ',');
+			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
 	}
 
@@ -56942,7 +56946,12 @@ var render = function() {
                                         _c(
                                           "span",
                                           { staticClass: "item_price" },
-                                          [_vm._v("$ " + _vm._s(p.price))]
+                                          [
+                                            _vm._v(
+                                              "Rp. " +
+                                                _vm._s(_vm.formatPrice(p.price))
+                                            )
+                                          ]
                                         ),
                                         _vm._v(" "),
                                         _c("del", [_vm._v("$280.00")])
@@ -57059,7 +57068,14 @@ var render = function() {
                                         _c(
                                           "span",
                                           { staticClass: "item_price" },
-                                          [_vm._v("$ " + _vm._s(tv.price))]
+                                          [
+                                            _vm._v(
+                                              "Rp. " +
+                                                _vm._s(
+                                                  _vm.formatPrice(tv.price)
+                                                )
+                                            )
+                                          ]
                                         ),
                                         _vm._v(" "),
                                         _c("del", [_vm._v("$280.00")])
@@ -57812,28 +57828,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	http: {
@@ -57844,7 +57838,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 
-			image: {}
+			image: {},
+			names: ''
 		};
 	},
 	mounted: function mounted() {},
@@ -57858,12 +57853,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			axios.get('./product/' + this.$route.params.product_name).then(function (response) {
-				_this.image = response.data;
-				console.log(_this.image);
-				console.log(_this.image);
+				_this.image = response.data.product;
+				_this.names = response.data.name;
 			}).catch(function (error) {
 				console.log(error.response.data);
 			});
+		},
+		formatPrice: function formatPrice(value) {
+			var val = (value / 1).toFixed(2).replace('.', ',');
+			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
 	}
 
@@ -57878,14 +57876,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "amir" } }, [
-    _vm._m(0),
+    _c("div", { staticClass: "services-breadcrumb" }, [
+      _c("div", { staticClass: "agile_inner_breadcrumb" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("ul", { staticClass: "w3_short" }, [
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: { name: "ShopIndex" } } }, [
+                  _vm._v("Home")
+                ]),
+                _vm._v(" "),
+                _c("i", [_vm._v("|")])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", [_vm._v(_vm._s(_vm.names))])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "banner-bootom-w3-agileits py-5" }, [
       _c("div", { staticClass: "container py-xl-4 py-lg-2" }, [
         _c(
           "h3",
           { staticClass: "tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" },
-          [_vm._v("\n                " + _vm._s(_vm.image.product_title))]
+          [_vm._v("\n            " + _vm._s(_vm.image.product_title))]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
@@ -57905,7 +57923,10 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "img-fluid",
-                          attrs: { src: _vm.image.img_product1 }
+                          attrs: {
+                            src: _vm.image.img_product1,
+                            "data-imagezoom": "true"
+                          }
                         })
                       ]
                     ),
@@ -57919,7 +57940,10 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "img-fluid",
-                          attrs: { src: _vm.image.img_product2 }
+                          attrs: {
+                            src: _vm.image.img_product2,
+                            "data-imagezoom": "true"
+                          }
                         })
                       ]
                     ),
@@ -57933,14 +57957,13 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "img-fluid",
-                          attrs: { src: _vm.image.img_product3 }
+                          attrs: {
+                            src: _vm.image.img_product3,
+                            "data-imagezoom": "true"
+                          }
                         })
                       ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._m(2)
+                    )
                   ]),
                   _vm._v(" "),
                   _c("ul", { staticClass: "carousel-indicators list-inline" }, [
@@ -58023,7 +58046,9 @@ var render = function() {
               _vm._v(" "),
               _c("p", { staticClass: "mb-3" }, [
                 _c("span", { staticClass: "item_price" }, [
-                  _vm._v("$ " + _vm._s(_vm.image.price) + " ")
+                  _vm._v(
+                    "Rp. " + _vm._s(_vm.formatPrice(_vm.image.price)) + " "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("del", { staticClass: "mx-2 font-weight-light" }, [
@@ -58043,8 +58068,7 @@ var render = function() {
                 _c("p", { staticClass: "my-3" }, [
                   _c("i", { staticClass: "far fa-hand-point-right mr-2" }),
                   _vm._v(
-                    "\n                                " +
-                      _vm._s(_vm.image.garansi)
+                    "\n                            " + _vm._s(_vm.image.garansi)
                   )
                 ]),
                 _vm._v(" "),
@@ -58055,12 +58079,12 @@ var render = function() {
                 _c("p", { staticClass: "my-sm-4 my-3" }, [
                   _c("i", { staticClass: "fas fa-retweet mr-3" }),
                   _vm._v(
-                    _vm._s(_vm.image.payment) + "\n                            "
+                    _vm._s(_vm.image.payment) + "\n                        "
                   )
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(0)
             ]
           )
         ])
@@ -58069,52 +58093,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "services-breadcrumb" }, [
-      _c("div", { staticClass: "agile_inner_breadcrumb" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("ul", { staticClass: "w3_short" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "index.html" } }, [_vm._v("Home")]),
-              _vm._v(" "),
-              _c("i", [_vm._v("|")])
-            ]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Single Product 1")])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control left pt-3",
-        attrs: { href: "#myCarousel", "data-slide": "prev" }
-      },
-      [_c("i", { staticClass: "fa fa-chevron-left" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control right pt-3",
-        attrs: { href: "#myCarousel", "data-slide": "next" }
-      },
-      [_c("i", { staticClass: "fa fa-chevron-right" })]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -72,4 +72,12 @@ class ProductClass {
             return $product;
         }
     }
+    public function CatNameByID($id)
+    {
+        $cat        = MCategoryProduct::where('id', $id)->first();
+
+        if(!empty($cat)){
+            return $cat->category_name;
+        }
+    }
 }
