@@ -1,5 +1,5 @@
 <template>
-    <div id="amir">
+
       <div class="ads-grid py-sm-5 py-4">
           <div class="container py-xl-4 py-lg-2">
             <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -55,9 +55,19 @@
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
         },
+        /*
+        metaInfo: {
+            title: this.name_cats,
+            titleTemplate: '%s | My Awesome Webapp',
+            meta: [
+                { charset: 'utf-8' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                {name: 'description', content: 'I have things here on my site.'}
+            ]
+        },
+        */
 		data(){
 			return{
-
 				queries: {},
         current_page: 1,
 				data: [],
@@ -71,6 +81,16 @@
         name_cats: ''
 			}
 		  },
+        metaInfo () {
+        return {
+            title: this.name_cats,
+            meta: [
+                { charset: 'utf-8' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                {name: 'description', content: 'I have things here on my site.'}
+            ]
+        }
+        },
 		mounted(){
 		},
 		created: function()
@@ -82,7 +102,7 @@
 				axios.get('./category-product/'+this.$route.params.alias + '?page=' + page)
 					.then(response => {
 						this.queries	= response.data.cats
-            this.name_cats  = response.data.name_cat
+                        this.name_cats  = response.data.name_cat
 					})
 					.catch(error => {
 						console.log(error.response.data);

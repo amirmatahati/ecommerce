@@ -11,7 +11,8 @@ let routes = [
   {
       path: '/',
       name: 'ShopIndex',
-      component: ShopIndex
+      component: ShopIndex,
+      meta: { title: 'My Page Title' }
   },
   {
       path: '/add-product',
@@ -31,7 +32,20 @@ let routes = [
   {
       path: '/:alias',
       name: 'DetailShop',
-      component: DetailShop
+      component: DetailShop,
+      meta: {
+      title: 'About Page - Example App',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The about page of our example app.'
+        },
+        {
+          property: 'og:description',
+          content: 'The about page of our example app.'
+        }
+      ]
+    }
   },
   {
       path: '/detail/:product_name',

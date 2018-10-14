@@ -1,9 +1,6 @@
 <template>
     <div id="amir">
-      <vue-headful
-            title="Title from vue-headful"
-            description="Description from vue-headful"
-        />
+      
       <!-- banner -->
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
@@ -175,6 +172,15 @@
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
         },
+    metaInfo: {
+      title: 'Default Title',
+      titleTemplate: '%s | My Awesome Webapp',
+      meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {name: 'description', content: 'I have things here on my site.'}
+    ]
+    },
 		data(){
 			return{
 

@@ -24,6 +24,7 @@
     "ajv": "^6.5.4",
     "bootstrap-vue": "^2.0.0-rc.11",
     "laravel-vue-pagination": "^2.1.0",
-    "vue-ckeditor2": "^2.0.9"
+    "vue-ckeditor2": "^2.0.9",
+    "vue-meta": "^1.5.5"
   }
 }
