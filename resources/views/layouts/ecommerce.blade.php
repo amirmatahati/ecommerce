@@ -17,7 +17,7 @@
   	<!-- Bootstrap css -->
   	<link href="web/css/style.css" rel="stylesheet" type="text/css" media="all" />
   	<!-- Main css -->
-  	<link rel="web/stylesheet" href="css/fontawesome-all.css">
+  	<link rel="stylesheet" href="web/css/fontawesome-all.css">
   	<!-- Font-Awesome-Icons-CSS -->
   	<link href="web/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
   	<!-- pop-up-box -->
@@ -69,9 +69,6 @@
       </div>
     </div>
     <script src="js/app.js" defer></script>
-<!--    <script src="https://unpkg.com/vue@latest"></script>
-  	<script src="https://cdn.jsdelivr.net/npm/vue@2.5"></script> -->
-
     <script src="web/js/jquery-2.2.3.min.js"></script>
     <script src="web/js/bootstrap.js"></script>
     <script src="web/js/imagezoom.js"></script>
@@ -91,7 +88,9 @@
             $(this).toggleClass('open');
           }
         );
+        
       });
+      
     </script>
     <!-- //nav smooth scroll -->
 

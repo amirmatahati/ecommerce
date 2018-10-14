@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 //import router from './routes';
 import axios from 'axios';
@@ -14,9 +15,12 @@ import BootstrapVue from 'bootstrap-vue';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'bulma/css/bulma.css';
 //import ProductZoomer from 'vue-product-zoomer';
 import vueHeadful from 'vue-headful';
 import Meta from 'vue-meta';
+import store from './store.js';
+import vmodal from 'vue-js-modal';
 
 window.Vue = require('vue');
 /**
@@ -26,12 +30,18 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('products-list', require('./components/ProductsList.vue'));
+Vue.component('cart-dropdown', require('./components/shop/Cart.vue'));
+Vue.component('button-cart', require('./components/shop/ButtonChart.vue'));
+Vue.component('cart-dropdown1', require('./components/Cart.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('vue-headful', vueHeadful);
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(Meta)
+Vue.use(Vuex)
+Vue.use(vmodal)
 //Vue.use(ProductZoomer)
 
 /*
@@ -93,5 +103,6 @@ const routes = [
 const router = new VueRouter({ routes });
 
 const app = new Vue({
-  router
+  router,
+  store: new Vuex.Store(store)
 }).$mount('#app');
