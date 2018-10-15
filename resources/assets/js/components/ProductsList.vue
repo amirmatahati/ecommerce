@@ -7,13 +7,13 @@
         </thead>
 
         <tbody>
-            <tr v-for="item in items" :key="item.id">
-                <td v-text="item.title"></td>
+            <tr v-for="image in items" :key="image.id">
+                <td v-text="image.title"></td>
 
-                <td>${{ item.price.toFixed(2) }}</td>
+                <td>${{ image.price.toFixed(2) }}</td>
 
                 <td><button class="button is-success"
-        @click="addToCart(item)">Add to Cart</button></td>
+        @click="addToCart(image)">Add to Cart</button></td>
             </tr>
         </tbody>
     </table>
@@ -26,27 +26,27 @@ export default {
                 {
                     id: 1,
                     title: 'Children of Bodon - Hatebreeder',
-                    price: 9.99
+                    price: 1000
                 },
                 {
                     id: 2,
                     title: 'Emperor - Anthems to the Welkin at Dusk',
-                    price: 6.66
+                    price: 2000
                 },
                 {
                     id: 3,
                     title: 'Epica - The Quantum Enigma',
-                    price: 15.99
+                    price: 3000
                 },
                 {
                     id: 4,
                     title: 'Chthonic - Takasago Army',
-                    price: 14.00
+                    price: 4000
                 },
                 {
                     id: 5,
                     title: 'Silencer - Death - Pierce Me',
-                    price: 1.20
+                    price: 5000
                 },
                 {
                     id: 6,
@@ -77,8 +77,8 @@ export default {
         };
     },
     methods: {
-        addToCart(item) {
-            this.$store.commit('addToCart', item);
+        addToCart(image) {
+            this.$store.commit('addToCart', image);
         }
     },
    

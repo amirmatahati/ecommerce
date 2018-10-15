@@ -5,16 +5,16 @@
         </a>
 
         <div v-if="$store.state.cart.length > 0" class="navbar-dropdown is-boxed is-right">
-            <a v-for="item in $store.state.cart"
-    :key="item.id"
+            <a v-for="image in $store.state.cart"
+    :key="image.id"
     class="navbar-item"
     href=""
 >
     <span class="removeBtn"
         title="Remove from cart"
-        @click.prevent="removeFromCart(item)">X</span>
+        @click.prevent="removeFromCart(image)">X</span>
 
-    {{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}
+    {{ image.title }} x{{ image.quantity }}  ${{ image.totalPrice }}
 </a>
 
 
@@ -44,16 +44,16 @@ export default {
         totalPrice() {
             let total = 0;
 
-            for (let item of this.$store.state.cart) {
-                total += item.totalPrice;
+            for (let image of this.$store.state.cart) {
+                total += image.totalPrice;
             }
 
-            return total.toFixed(2);
+            return total;
         }
     },
     methods: {
-        removeFromCart(item) {
-            this.$store.commit('removeFromCart', item);
+        removeFromCart(image) {
+            this.$store.commit('removeFromCart', image);
         }
     }
 }

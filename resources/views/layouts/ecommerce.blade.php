@@ -53,6 +53,21 @@
 #myCarousel .carousel-indicators > li.active img {
     opacity: 0.7;
 }
+.cart-card{
+  float: left;
+  width: 326px;
+  overflow: hidden;
+  height: 152px;
+}
+.cart-card img{
+  width: 45%;
+  float: left;
+}
+.cart-card p{
+  font-size: 9pt;
+  font-weight: normal;
+}
+
       </style>
 </head>
 <body>
@@ -70,6 +85,7 @@
     </div>
     <script src="js/app.js" defer></script>
     <script src="web/js/jquery-2.2.3.min.js"></script>
+    
     <script src="web/js/bootstrap.js"></script>
     <script src="web/js/imagezoom.js"></script>
     <script src="web/js/jquery.flexslider.js"></script>

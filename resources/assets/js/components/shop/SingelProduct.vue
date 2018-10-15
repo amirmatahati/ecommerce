@@ -108,7 +108,13 @@
 		data(){
 			return{
               
-          image:{},
+          image:{
+              product_title: '',
+              img_product1: '',
+              img_product2: '',
+              img_product3: '',
+              price: ''
+          },
           names : ''
 			}
 		  },
@@ -132,8 +138,8 @@
 					});
             },
             formatPrice(value) {
-				let val = (value/1).toFixed(2).replace('.', ',')
-				return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+				let val = (value/1).toFixed(2).replace('.', '.')
+				return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             },
             addToCart(image) {
                 this.$store.commit('addToCart', image);

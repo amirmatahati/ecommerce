@@ -6,10 +6,26 @@ let store = {
     cartCount: cartCount ? parseInt(cartCount) : 0,
     },
     mutations: {
-        addToCart(state, image) {
+        addToCart(state, item) {
+            /*
             state.cart.push(image);
     
             state.cartCount++;
+            */
+           
+           let found = state.cart.find(barang => barang.id == item.id);
+            if (found) {
+                found.quantity ++;
+                found.totalPrice = found.quantity * found.price;
+            } else {
+                state.cart.push(item);
+
+                Vue.set(item, 'quantity', 1);
+                Vue.set(item, 'totalPrice', item.price);
+            }
+
+            state.cartCount++;
+
         },
         removeFromCart(state, image) {
             let index = state.cart.indexOf(image);
