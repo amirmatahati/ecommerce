@@ -7,7 +7,7 @@
 			</h3>
             <div class="checkout-right">
                 <h4 class="mb-sm-4 mb-3">Your shopping cart contains:
-					<span>3 Products</span>
+					<span>{{ $store.state.cartCount }} Products</span>
 				</h4>
 
                 <div class="table-responsive">
@@ -29,15 +29,8 @@
                                     </a>
                                 </td>
                                 <td class="invert">
-                                    <div class="quantity">
-                                        <div class="quantity-select">
-                                            <div class="entry value-minus">&nbsp;</div>
-                                                <div class="entry value">
-                                                    <span>{{ item.quantity }}</span>
-                                                </div>
-                                            <div class="entry value-plus active">&nbsp;</div>
-                                        </div> 
-                                    </div>
+                                    <span>{{ item.quantity }}</span>
+                                    <b-button size="lg" variant="link" @click.prevent="addToCart(item)"><i class="fas fa-plus"></i></b-button>
                                 </td>
                                 <td class="invert">{{ item.product_title }}</td>
                                 <td class="invert">{{ item.totalPrice }}</td>
@@ -77,7 +70,10 @@ export default {
     methods: {
         removeFromCart(item) {
             this.$store.commit('removeFromCart', item);
-        }
+        },
+         addToCart(item) {
+                this.$store.commit('addToCart', item);
+            },
     }
 }
 </script>

@@ -60,6 +60,10 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
+                                <a href="{{ route('social.google') }}" class="btn btn-lg btn-block omb_btn-google">
+                                    <i class="fa fa-google-plus visible-xs"></i>
+                                    <span class="hidden-xs">Google+</span>
+                                </a>
                             </div>
                         </div>
                     </form>

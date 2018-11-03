@@ -19,6 +19,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .logo_agile{
+            padding: 19px 0 0px !important;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

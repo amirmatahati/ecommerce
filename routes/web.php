@@ -28,3 +28,5 @@ Route::post('/admin/save-product', 'Admin\HomeController@storeProduct')->name('s
 Route::get('/admin/list-product', 'Admin\HomeController@IndexProduct')->name('listproduct');
 Route::get('/admin/edit-product/{id}', 'Admin\HomeController@EditProduct')->name('editproduct');
 Route::post('/admin/update-product/{id}', 'Admin\HomeController@UpdateProduct')->name('updateproduct');
+Route::get('/redirect/google', ['uses' => 'Auth\SocialiteController@redirectToProvider', 'as' => 'social.google']);
+Route::get('login/google', 'Auth\SocialiteController@handleProviderCallback')->name('google');
