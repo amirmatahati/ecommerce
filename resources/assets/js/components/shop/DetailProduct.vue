@@ -1,5 +1,19 @@
 <template>
-
+    <div id="amir">
+        <div class="services-breadcrumb">
+            <div class="agile_inner_breadcrumb">
+                <div class="container">
+                    <ul class="w3_short">
+                        <li>
+                            <router-link v-bind:to="{name: 'ShopIndex'}">Home</router-link>
+                            <i>|</i>
+                        </li>
+                        <li>{{ name_cats }} <i>|</i></li>
+                        <cart-dropdown></cart-dropdown>
+                    </ul>
+                </div>
+            </div>
+        </div>
       <div class="ads-grid py-sm-5 py-4">
           <div class="container py-xl-4 py-lg-2">
             <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -44,6 +58,7 @@
 
           </div>
       </div>
+    </div>
     </div>
 </template>
 

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import ShopIndex from './components/shop/IndexHome.vue';
 import DetailShop from './components/shop/DetailProduct.vue';
 import SingelProduct from './components/shop/SingelProduct.vue';
+import Keranjang from './components/Keranjang.vue';
 
 import AddProduct from './components/admin/product/Add.vue';
 import ListProduct from './components/admin/product/ListProduct.vue';
@@ -46,13 +47,7 @@ let routes = [
         }
       ]
     }
-  },
-  {
-      path: '/detail/:product_name',
-      name: 'SingelProduct',
-      component: SingelProduct
-  }
-];
+  },];
 
 export default new VueRouter({
     routes

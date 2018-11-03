@@ -57,7 +57,7 @@
   float: left;
   width: 326px;
   overflow: hidden;
-  height: 152px;
+  height: 167px;
 }
 .cart-card img{
   width: 45%;

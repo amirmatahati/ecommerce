@@ -1,7 +1,7 @@
 <template>
-    <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2" v-if="$store.state.cart.length > 0">
+    <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
         <a  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cart ({{ $store.state.cartCount }})
+              <i class="fas fa-cart-plus"></i> ({{ $store.state.cartCount }})
         </a>
         <div class="dropdown-menu">
             <div class="agile_inner_drop_nav_info p-4">
@@ -16,10 +16,21 @@
                                 Qty : {{ item.quantity }} <br />
                                 Subtotal : {{ item.totalPrice }}
                             </p>
+                            <b-button size="sm" variant="link" @click.prevent="removeFromCart(item)"><i class="far fa-trash-alt"></i> Remove</b-button>
+                             
                         </div>
                     </div>
                     <div style="clear:both;"></div>
-                    <p>Total : {{ totalPrice }}</p>
+                    <p>
+                        <b-row>
+                            <b-col sm="6">
+                                Total : {{ totalPrice }}
+                            </b-col>
+                            <b-col sm="6">
+                                <router-link variant="link" v-bind:to="{name: 'Keranjang'}">Checkout</router-link>
+                            </b-col>
+                        </b-row>
+                    </p>
                 </div>
             </div>
         </div>

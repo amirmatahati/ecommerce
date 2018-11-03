@@ -80,4 +80,11 @@ class ProductClass {
             return $cat->category_name;
         }
     }
+    public function nameProductByID($id)
+    {
+        $nm         = MProduct::where('id', $id)->first();
+        if(!empty($nm)){
+            return $nm->product_title;
+        }
+    }
 }

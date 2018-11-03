@@ -51,7 +51,7 @@ class HomeController extends Controller
         $data   = [
             'cats'      => $cats,
             'name_cat'  => $name_cat
-        ];
+        ]; 
 
         return response()->json($data);
     }
@@ -60,9 +60,11 @@ class HomeController extends Controller
         $id_produk      = $this->products->GetiDbyAlias($product_alias);
         $product        = $this->products->GetProduk($id_produk);
         $namesCat       = $this->products->CatNameByID($product->produc_category);
+        $nmproduct      = $this->products->nameProductByID($id_produk);
         $data = [
           'name'        => $namesCat,
-          'product'     => $product
+          'product'     => $product,
+          'nmproduct'   =>$nmproduct
         ];
         return response()->json($data);
     }

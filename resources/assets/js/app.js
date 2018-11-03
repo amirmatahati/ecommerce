@@ -16,11 +16,11 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bulma/css/bulma.css';
-//import ProductZoomer from 'vue-product-zoomer';
 import vueHeadful from 'vue-headful';
 import Meta from 'vue-meta';
 import store from './store.js';
 import vmodal from 'vue-js-modal';
+import VueSweetalert2 from 'vue-sweetalert2';
 
 window.Vue = require('vue');
 /**
@@ -42,6 +42,7 @@ Vue.use(BootstrapVue);
 Vue.use(Meta)
 Vue.use(Vuex)
 Vue.use(vmodal)
+Vue.use(VueSweetalert2);
 //Vue.use(ProductZoomer)
 
 /*
@@ -96,6 +97,11 @@ const routes = [
       path: '/detail/:product_name',
       name: 'SingelProduct',
       component: require('./components/shop/SingelProduct.vue')
+  },
+  {
+      path: '/cart',
+      name: 'Keranjang',
+      component: require('./components/Keranjang.vue')
   }
 ];
 

@@ -108,16 +108,27 @@
 		data(){
 			return{
               
-          image:{
-              product_title: '',
-              img_product1: '',
-              img_product2: '',
-              img_product3: '',
-              price: ''
-          },
-          names : ''
+                image:{
+                    product_title: '',
+                    img_product1: '',
+                    img_product2: '',
+                    img_product3: '',
+                    price: ''
+                },
+                names : '',
+                
 			}
-		  },
+          },
+        metaInfo () {
+                return {
+                    title: this.image.product_title,
+                    meta: [
+                        { charset: 'utf-8' },
+                        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                        {name: 'description', content: 'I have things here on my site.'}
+                    ]
+                }
+        },
 		mounted(){
 		},
 		created: function()
@@ -132,6 +143,7 @@
 					.then(response => {
                         this.image	= response.data.product
                         this.names  = response.data.name
+                        this.title  = response.data.nmproduct
 					})
 					.catch(error => {
 						console.log(error.response.data);
@@ -143,6 +155,7 @@
             },
             addToCart(image) {
                 this.$store.commit('addToCart', image);
+                this.alertDisplay();
             },
             show () {
                 this.$modal.show('hello-world');
@@ -150,7 +163,13 @@
             },
             hide () {
                 this.$modal.hide('hello-world');
-            }
+            },
+            alertDisplay() {
+				this.$swal({
+				title: 'Cart update',
+				showCloseButton: true,
+				});
+			}
 
 		}
 
